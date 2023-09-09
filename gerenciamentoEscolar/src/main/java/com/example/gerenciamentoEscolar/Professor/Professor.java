@@ -16,6 +16,7 @@ import lombok.NoArgsConstructor;
 public class Professor {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "Nome")
     private String nome;
     @Enumerated(EnumType.STRING)
     private Disciplina disciplina;

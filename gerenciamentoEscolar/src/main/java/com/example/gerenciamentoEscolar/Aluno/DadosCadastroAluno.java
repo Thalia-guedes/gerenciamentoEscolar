@@ -9,7 +9,6 @@ import jakarta.validation.constraints.Pattern;
 public record DadosCadastroAluno(
         @NotBlank
         String nome,
-        @NotBlank
         @Pattern(regexp = "\\d{4}-\\d{2}-\\d{2}", message = "A data de nascimento deve estar no formato AAAA-MM-DD")
         String dataNascimento,
         @NotNull(message = "O campo 'endereco' não deve ser nulo")
@@ -17,3 +16,4 @@ public record DadosCadastroAluno(
         DadosEndereco endereco
 ) {
 }
+

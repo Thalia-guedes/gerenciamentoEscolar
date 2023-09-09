@@ -1,6 +1,7 @@
 package com.example.gerenciamentoEscolar.Aluno;
 
 import com.example.gerenciamentoEscolar.Endereco.Endereco;
+import com.example.gerenciamentoEscolar.Matricula.Matricula;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -17,8 +18,11 @@ public class Aluno {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "Nome")
     private String nome;
+    @Column(name = "DataNascimento")
     private String dataNascimento;
+
     @Embedded
     private Endereco endereco;
     public Aluno(DadosCadastroAluno dados) {

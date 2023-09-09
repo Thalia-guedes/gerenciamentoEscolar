@@ -1,6 +1,5 @@
 package com.example.gerenciamentoEscolar.Curso;
 
-import com.example.gerenciamentoEscolar.Professor.DadosCadastroProfessor;
 import com.example.gerenciamentoEscolar.Professor.Professor;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -17,15 +16,23 @@ public class Curso {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "nome_curso")
+    @Column(name = "NomeCurso")
     private String nomeCurso;
 
-    @ManyToOne
-    @JoinColumn(name = "professor_id", referencedColumnName = "id")
-    private Professor professor;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "ProfessorResponsavel")
+    private Professor professorResponsavel;
+
+    public Professor getProfessorResponsavel() {
+        return professorResponsavel;
+    }
+
+    public void setProfessorResponsavel(Professor professorResponsavel) {
+        this.professorResponsavel = professorResponsavel;
+    }
 
     public Curso(DadosCadastroCurso dados) {
         this.nomeCurso = dados.nomeCurso();
-        this.professor = dados.professor();
+        this.professorResponsavel = dados.professor();
     }
 }
